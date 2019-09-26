@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: postgres:alpine
+
+  app:
+    volumes:
+      - ./hello:/src/app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: tail -F anything
+    ports:
+      - '4000:4000'
